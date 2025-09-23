@@ -75,3 +75,11 @@ kubectl get configmap cluster-overrides -n kew-dev-shared -o yaml | grep layer
 ```
 
 For another shoot, replace the object names with those defined under `clusters/shoots/<project>/<shoot>/resources` (for example `cluster-settings` in the GCP demo).
+
+The demo also deploys `podinfo` instances at each layer. After enabling the extension you should see:
+
+```bash
+kubectl get pods -n podinfo-global         # global layer
+kubectl get pods -n podinfo-kew-dev        # project layer
+kubectl get pods -n podinfo-<shoot-name>   # per-shoot overlay (if enabled)
+```
