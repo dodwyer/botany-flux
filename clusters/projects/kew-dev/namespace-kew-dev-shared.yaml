@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: kew-dev-shared
+  labels:
+    flux.botany.livewyer.com/layer: project
+    project.gardener.cloud/name: kew-dev

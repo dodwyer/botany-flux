@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cluster-defaults
+  namespace: platform-tools
+  labels:
+    flux.botany.livewyer.com/layer: global
+    app.kubernetes.io/name: cluster-defaults
+  annotations:
+    botany.livewyer.com/description: "Baseline settings shared across every shoot"
+data:
+  log.level: info
+  maintenance.window: "22:00-06:00"
+  support.contact: sre@livewyer.com

@@ -1,0 +1,23 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: slo-reporter
+  namespace: dg31b58jmn-apps
+spec:
+  schedule: "*/15 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          restartPolicy: OnFailure
+          containers:
+            - name: reporter
+              image: ghcr.io/stefanprodan/podinfo:6.3.5
+              args:
+                - /bin/sh
+                - -c
+                - "date && echo collecting slo metrics for dg31b58jmn"
+              resources:
+                requests:
+                  cpu: 25m
+                  memory: 32Mi
