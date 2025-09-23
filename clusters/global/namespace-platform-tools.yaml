@@ -4,4 +4,4 @@ metadata:
   name: platform-tools
   labels:
     flux.botany.livewyer.com/layer: global
-    app.kubernetes.io/managed-by: flux
+    app.kubernetes.io/name: platform-tools

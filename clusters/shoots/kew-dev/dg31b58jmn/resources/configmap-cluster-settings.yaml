@@ -9,6 +9,7 @@ metadata:
   annotations:
     botany.livewyer.com/description: "Per-shoot configuration for dg31b58jmn"
 data:
+  layer: shoot
   region: gcp-europe-west1
   endpoint.suffix: gcp.kew.k8s.london
   feature.preview: "enabled"

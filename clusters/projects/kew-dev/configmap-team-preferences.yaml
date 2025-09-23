@@ -9,5 +9,6 @@ metadata:
   annotations:
     botany.livewyer.com/description: "Developer defaults shared across kew-dev shoots"
 data:
+  layer: project
   feature.flags: "dashboards, tracing"
   default.ingress.class: "nginx"

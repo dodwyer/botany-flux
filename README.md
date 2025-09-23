@@ -46,7 +46,7 @@ Flux will always reconcile the layers in order before applying the cluster-speci
 ## Using with Gardener `shoot-flux`
 
 1. Point the Gardener project ConfigMap (`flux-config` in `garden-<project>` namespace) at this repository. Example values:
-   - `repositoryUrl`: `https://github.com/livewyer/botany-flux.git`
+   - `repositoryUrl`: `https://github.com/dodwyer/botany-flux.git`
    - `repositoryBranch`: `main`
    - `kustomizationPath`: `clusters/shoots/kew-dev/ovh-test-1`
 
@@ -58,3 +58,20 @@ Flux will always reconcile the layers in order before applying the cluster-speci
    - Update the Shoot’s `providerConfig` to point at the new path.
 
 This layout keeps common configuration in one place, lets teams share resources safely, and still gives individual clusters room for bespoke workloads.
+
+### Verifying Each Layer
+
+Every layer ships a ConfigMap with a simple `layer` key so you can confirm what landed on a shoot:
+
+```bash
+# Global resources (namespace platform-tools)
+kubectl get configmap cluster-defaults -n platform-tools -o yaml | grep layer
+
+# Project resources (namespace kew-dev-shared)
+kubectl get configmap team-preferences -n kew-dev-shared -o yaml | grep layer
+
+# Shoot resources (example shoot ovh-test-1)
+kubectl get configmap cluster-overrides -n kew-dev-shared -o yaml | grep layer
+```
+
+For another shoot, replace the object names with those defined under `clusters/shoots/<project>/<shoot>/resources` (for example `cluster-settings` in the GCP demo).

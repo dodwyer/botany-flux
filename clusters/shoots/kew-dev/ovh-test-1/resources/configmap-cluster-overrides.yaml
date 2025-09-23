@@ -9,5 +9,6 @@ metadata:
   annotations:
     botany.livewyer.com/description: "Shoot-specific overrides consumed by applications"
 data:
+  layer: shoot
   region: ovh-uk1
   endpoint.suffix: ovh.kew.k8s.london

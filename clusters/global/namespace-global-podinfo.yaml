@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: podinfo-global
+  labels:
+    flux.botany.livewyer.com/layer: global
+    app.kubernetes.io/name: podinfo
+    app.kubernetes.io/part-of: botany-demo

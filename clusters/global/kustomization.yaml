@@ -3,3 +3,5 @@ kind: Kustomization
 resources:
   - namespace-platform-tools.yaml
   - configmap-cluster-defaults.yaml
+  - namespace-global-podinfo.yaml
+  - podinfo-global.yaml

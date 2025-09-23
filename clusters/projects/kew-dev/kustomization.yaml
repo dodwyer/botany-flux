@@ -3,3 +3,5 @@ kind: Kustomization
 resources:
   - namespace-kew-dev-shared.yaml
   - configmap-team-preferences.yaml
+  - namespace-project-podinfo.yaml
+  - podinfo-project.yaml

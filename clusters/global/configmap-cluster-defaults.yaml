@@ -9,6 +9,7 @@ metadata:
   annotations:
     botany.livewyer.com/description: "Baseline settings shared across every shoot"
 data:
+  layer: global
   log.level: info
   maintenance.window: "22:00-06:00"
   support.contact: sre@livewyer.com
