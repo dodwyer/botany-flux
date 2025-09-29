@@ -48,9 +48,9 @@ Flux will always reconcile the layers in order before applying the cluster-speci
 1. Point the Gardener project ConfigMap (`flux-config` in `garden-<project>` namespace) at this repository. Example values:
    - `repositoryUrl`: `https://github.com/dodwyer/botany-flux.git`
    - `repositoryBranch`: `main`
-   - `kustomizationPath`: `clusters/shoots/kew-dev/ovh-test-1`
+   - `kustomizationPath`: `clusters/projects/kew-dev`
 
-2. Add the Flux extension to your Shoot and set the `providerConfig` to reference the per-shoot path (as above). The extension bootstraps Flux controllers and applies the layered manifests automatically.
+2. Add the Flux extension to your Shoot and set the `providerConfig` to reference the per-shoot path (`clusters/shoots/<project>/<shoot>`). If you are relying on the generated `NamespacedCloudProfile`, set `spec.cloudProfileName` to `<project>-flux` so the project defaults apply. The extension bootstraps Flux controllers and applies the layered manifests automatically—global defaults come from the CloudProfile, project overlays from the NamespacedCloudProfile/ConfigMap, and shoot specifics from your explicit override.
 
 3. To create new shoots:
    - Add a folder under `clusters/shoots/<project>/<shoot-name>` with its own `kustomization.yaml`.
