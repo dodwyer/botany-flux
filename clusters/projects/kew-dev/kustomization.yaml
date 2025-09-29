@@ -6,3 +6,4 @@ resources:
   - configmap-team-preferences.yaml
   - namespace-project-podinfo.yaml
   - podinfo-project.yaml
+  - podinfo-shoot-template.yaml

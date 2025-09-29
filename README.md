@@ -50,7 +50,7 @@ Flux will always reconcile the layers in order before applying the cluster-speci
    - `repositoryBranch`: `main`
    - `kustomizationPath`: `clusters/projects/kew-dev`
 
-2. Add the Flux extension to your Shoot and set the `providerConfig` to reference the per-shoot path (`clusters/shoots/<project>/<shoot>`). If you are relying on the generated `NamespacedCloudProfile`, set `spec.cloudProfileName` to `<project>-flux` so the project defaults apply. The extension bootstraps Flux controllers and applies the layered manifests automatically—global defaults come from the CloudProfile, project overlays from the NamespacedCloudProfile/ConfigMap, and shoot specifics from your explicit override.
+2. Add the Flux extension to your Shoot and set the `providerConfig` to reference the per-shoot path (`clusters/shoots/<project>/<shoot>`). If `flux_enable_namespaced_profiles` is enabled and your Gardener version supports it, set `spec.cloudProfileName` to `<project>-flux` so the project defaults apply. The extension bootstraps Flux controllers and applies the layered manifests automatically—global manifests come from the shared repo layers, project overlays from the ConfigMap (and optional NamespacedCloudProfile), and shoot specifics from your explicit override. When no per-shoot override is provided, the project layer still uses the `shoot-info` ConfigMap (via Flux `postBuild.substituteFrom`) to render the `podinfo-shoot-template.yaml` so every shoot receives a namespaced workload derived from its Gardener name.
 
 3. To create new shoots:
    - Add a folder under `clusters/shoots/<project>/<shoot-name>` with its own `kustomization.yaml`.
