@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cluster-overrides
+  namespace: kew-dev-shared
+  labels:
+    flux.botany.livewyer.com/layer: shoot
+    shoot.gardener.cloud/name: ovh-test-1
+  annotations:
+    botany.livewyer.com/description: "Shoot-specific overrides consumed by applications"
+data:
+  layer: shoot
+  region: ovh-uk1
+  endpoint.suffix: ovh.kew.k8s.london

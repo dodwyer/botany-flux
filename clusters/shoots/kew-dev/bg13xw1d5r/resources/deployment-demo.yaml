@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-echo
+  namespace: ovh-test-1-apps
+  labels:
+    app: demo-echo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: demo-echo
+  template:
+    metadata:
+      labels:
+        app: demo-echo
+    spec:
+      containers:
+        - name: echo
+          image: ghcr.io/fluxcd/flux-cli:v2.6.4
+          command: ["/bin/sh", "-c", "while true; do echo $(date) hello from ovh-test-1; sleep 30; done"]
+          resources:
+            requests:
+              cpu: 50m
+              memory: 64Mi
